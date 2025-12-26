@@ -18,8 +18,9 @@ jobs:
           node-version: 20.19.6
           cache: 'npm'
 
-      # 👇 New step: generate and commit lock file if missing
+      # 👇 Only generate & commit lock file on main
       - name: Ensure package-lock.json exists
+        if: github.ref == 'refs/heads/main'
         run: |
           if [ ! -f package-lock.json ]; then
             echo "package-lock.json not found, generating..."
