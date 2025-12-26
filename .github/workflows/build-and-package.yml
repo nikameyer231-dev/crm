@@ -1,0 +1,43 @@
+name: Build Package Extension
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-and-package:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run build
+        run: npm run build
+
+      - name: Package extension
+        run: |
+          BUILD_DIR="dist" # change if your build output differs
+          ZIP_NAME="crm-schema-mvp-extension.zip"
+          if [ ! -d "$BUILD_DIR" ]; then
+            echo "Build output directory $BUILD_DIR not found"
+            exit 1
+          fi
+          rm -f "$ZIP_NAME"
+          zip -r "$ZIP_NAME" "$BUILD_DIR" manifest.json public -x "**/node_modules/**" || true
+          ls -lh "$ZIP_NAME"
+
+      - name: Upload packaged artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: crm-extension-zip
+          path: crm-schema-mvp-extension.zip
