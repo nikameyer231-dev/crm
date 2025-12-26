@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "Employee & Client Management CRM",
+  "version": "1.1.0",
+  "description": "Client-centric CRM workspace (draggable popup) with Google Drive AppData sync.",
+  "permissions": [
+    "storage",
+    "identity"
+  ],
+  "oauth2": {
+    "client_id": "REPLACE_WITH_GOOGLE_OAUTH_CLIENT_ID",
+    "scopes": [
+      "https://www.googleapis.com/auth/drive.appdata",
+      "https://www.googleapis.com/auth/userinfo.email",
+      "https://www.googleapis.com/auth/userinfo.profile"
+    ]
+  },
+  "action": {
+    "default_popup": "popup/index.html",
+    "default_title": "Employee CRM"
+  },
+  "background": {
+    "service_worker": "background/index.js",
+    "type": "module"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "host_permissions": [],
+  "web_accessible_resources": [
+    {
+      "resources": ["assets/*", "popup/*"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

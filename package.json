@@ -1,0 +1,26 @@
+{
+  "name": "employee-crm-extension",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Chrome Extension CRM — Vite + React + TypeScript + Drive AppData sync",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && node ./scripts/emit-manifest.js",
+    "preview": "vite preview --port 5174"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-rnd": "^11.1.7",
+    "idb": "^7.0.1",
+    "axios": "^1.4.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.2",
+    "vite": "^5.0.0",
+    "@vitejs/plugin-react": "^4.0.0",
+    "@types/react": "^18.2.21",
+    "@types/react-dom": "^18.2.7",
+    "@types/chrome": "^0.0.182"
+  }
+}
