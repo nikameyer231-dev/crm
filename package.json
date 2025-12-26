@@ -6,14 +6,16 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build && node ./scripts/emit-manifest.js",
-    "preview": "vite preview --port 5174"
+    "preview": "vite preview --port 5174",
+    "test": "vitest"
   },
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-rnd": "^11.1.7",
     "idb": "^7.0.1",
-    "axios": "^1.4.0"
+    "axios": "^1.4.0",
+    "zustand": "^4.4.0"
   },
   "devDependencies": {
     "typescript": "^5.4.2",
@@ -21,6 +23,7 @@
     "@vitejs/plugin-react": "^4.0.0",
     "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",
-    "@types/chrome": "^0.0.182"
+    "@types/chrome": "^0.0.182",
+    "vitest": "^1.0.0"
   }
 }
